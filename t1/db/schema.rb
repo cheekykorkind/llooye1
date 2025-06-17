@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_17_121955) do
     t.string "title"
     t.text "content"
     t.datetime "published_at"
-    t.integer "status"
+    t.integer "status", default: 0
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,6 +57,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_17_121955) do
     t.text "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["nickname"], name: "index_users_on_nickname", unique: true
   end
 
   add_foreign_key "comments", "posts"
