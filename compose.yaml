@@ -1,0 +1,29 @@
+
+services:
+  llooye_app:
+    container_name: llooye_app
+    user: 1001:1001
+    build:
+      context: .
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+    ports:
+      - "3001:3000"
+    environment:
+      RAILS_ENV: development
+
+    working_dir: /workspace/myapp
+    volumes:
+      - ./:/workspace/myapp
+    depends_on:
+      - llooye_db
+
+  llooye_db:
+    image: postgres:14.12-alpine3.20
+    container_name: llooye_db
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    ports:
+      - "5432:5432"
