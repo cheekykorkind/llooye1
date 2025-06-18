@@ -1,8 +1,6 @@
 class Order < ApplicationRecord
-  has_many :books, through: :post_tags
   has_many :order_items, dependent: :destroy
-
-  # enum status: { draft: 0, published: 1 }
+  has_many :books, through: :order_items
 
   validates :name, presence: true, uniqueness: { case_sensitive: true }
 
