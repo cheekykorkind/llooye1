@@ -14,7 +14,7 @@ RSpec.describe Book, type: :model do
     it { should validate_presence_of(:author) } # author_id presence_of 또는 association presence
     it { should validate_presence_of(:published_year) }
     it { should validate_presence_of(:isbn) }
-    it { should validate_uniqueness_of(:isbn) }
+    it { should validate_uniqueness_of(:isbn).scoped_to(:author_id).with_message("has already been taken") }
     it { should validate_presence_of(:price) }
     it { should validate_numericality_of(:price).is_greater_than(0) }
     it { should validate_presence_of(:stock_quantity) }

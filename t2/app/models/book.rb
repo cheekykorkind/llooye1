@@ -7,7 +7,8 @@ class Book < ApplicationRecord
   validates :title, presence: true
   validates :author, presence: true
   validates :published_year, presence: true
-  validates :isbn, presence: true, uniqueness: { case_sensitive: true }
+  # validates :isbn, presence: true, uniqueness: { case_sensitive: false }
+  validates :isbn, presence: true, uniqueness: { scope: :author_id, message: "has already been taken" }
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :stock_quantity, presence: true, numericality: { greater_than: 0 }
 end
