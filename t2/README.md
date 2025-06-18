@@ -1,24 +1,7 @@
-# README
+bundle exec rails g model Book title:text author:text published_year:integer isbn:text price:float stock_quantity:integer author:references
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+bundle exec rails g model Author name:text date_of_birth:datetime nationality:text
 
-Things you may want to cover:
+bundle exec rails g model Order order_number:text order_date:datetime total_price:float status:integer
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+bundle exec rails g model OrderItem quantity:integer unit_price:float order:references book:references
